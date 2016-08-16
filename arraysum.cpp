@@ -16,9 +16,9 @@ int main( )
         cin >> arr[i];    
     }
     int sum = 0;
-    for(int i = 0 ; i < numberOfElements ; i++)
+    for(int ele : arr )
     {        
-        sum = sum + arr[i];
+        sum = sum + ele;
     } 
     
     cout << sum;
