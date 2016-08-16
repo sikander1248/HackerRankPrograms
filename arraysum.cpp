@@ -1,4 +1,4 @@
-cout<<"HELLO";
+#include<stdio.h>
 #include <iostream>
 using namespace std;
 int calculateArraySum(vector <int> v){
