@@ -12,13 +12,13 @@ int main()
     for(int i = 0 ; i < n ; i++)
         scanf(" %s",map[i]);
 
-    char result[n][n + 1];
-
-    memcpy(result, map, sizeof(map));
-
-    for(int i = 1 ; i < n - 1 ; i++ )
-        for(int j = 1 ; j < n - 1 ; j++)
+    for(int i = 0 ; i < n  ; i++ )
+    {
+        for(int j = 0 ; j < n  ; j++)
         {
+            if(i == 0 || j == 0 || i == n - 1 || j == n - 1)
+                printf("%c",map[i][j]);
+            else{
             int key = map[i][j];
             int up = map[i - 1][j];
             int down = map[i + 1][j];
@@ -26,8 +26,12 @@ int main()
             int right = map[i][j + 1];
             if(key > up && key > down &&
                key > left && key > right)
-                result[i][j] = 'X';
+                printf("X");
+            else
+                printf("%c",map[i][j]);
+            }
         }
-     for(int i = 0 ; i < n ; i++)
-        printf("%s\n",result[i]);
+        printf("\n");
+    }
+
 }
