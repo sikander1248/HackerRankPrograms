@@ -5,15 +5,12 @@ int main()
     scanf("%d", &n);
 
     int birdIds[n];
-    for(int i = 0 ; i < n ; i++)
-        scanf(" %d" , &birdIds[i]);
-
     int freq[6] = {0};
     for(int i = 0 ; i < n ; i++)
     {
-        int index = birdIds[i];
-        freq[ index ]++;
-    }
+        scanf(" %d" , &birdIds[i]);        
+        freq[ birdIds[i] ]++;
+    }    
 
     int maxType = 1;
     int maxFreq = freq[1];
@@ -28,3 +25,15 @@ int main()
     }
     printf("%d\n",maxType);
 }
+
+
+
+
+
+
+
+
+
+
+
+
