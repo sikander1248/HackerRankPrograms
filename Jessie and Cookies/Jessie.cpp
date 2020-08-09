@@ -2,15 +2,9 @@
 #include <vector>
 #include <algorithm>
 #include <stdio.h>
+#include <queue>
+
 using namespace std;
-void display(vector<int> &v)
-{
-    for(auto ele : v)
-    {
-        cout << ele <<" ";
-    }
-    cout << endl;
-}
 int main()
 {
     int n, k;
@@ -20,43 +14,28 @@ int main()
     cin >> k;
 
 //    cout <<"Enter the sweetness of cookies : ";
-    vector<int> v(n);
+    priority_queue<int, vector<int>, greater<int> > v;
     for(int i = 0 ; i < n ;i++)
     {
-        cin >> v[i];
+        int ele;
+        cin >> ele;
+        v.push(ele);
     }
-    //display(v);    
 
-    sort( v.begin() , v.end() );
-
-    //display(v);    
     int c = 0;
-    while(v.size() >= 2 && v[0] < k)
+    while(v.top() < k)
     {
-        c++;
-        int x = v[0];
-        int y = v[1];
-        v.erase(v.begin() );
-        v.erase(v.begin() );
-
-        int newCookie = 1 * x + 2 * y;
-        auto it = v.begin();
-
-        while(it != v.end() )
+        int x = v.top();     v.pop();
+        if(v.empty() == true)
         {
-            if(*it < newCookie)
-            {
-                it++;
-                continue;
-            }
-            break;
+            cout << -1 << endl;
+            return 0;    
         }
-        v.insert(it, newCookie);
-        //display(v);
-        //getchar();
+        int y = v.top();     v.pop();
+
+        int newCookie = (1 * x) + (2 * y);
+        v.push(newCookie);
+        c++;
     }
-    if(v.size() < 2)
-        cout << -1 << endl;
-    else
-        cout << c << endl;    
+    cout << c << endl;
 }
